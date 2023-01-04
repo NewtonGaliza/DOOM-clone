@@ -15,6 +15,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private LayerMask raycastLayerMask;
     [SerializeField] private float gunShotRadius; //20f
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private int maxAmmo;
+    [SerializeField] private int ammo;
 
 
     // Start is called before the first frame update
@@ -29,7 +31,7 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire)
+        if(Input.GetMouseButtonDown(0) && Time.time > nextTimeToFire && ammo > 0)
         {
             Fire();
         }
@@ -91,8 +93,22 @@ public class Gun : MonoBehaviour
                 }
             }
         }
-
-
         nextTimeToFire = Time.time * fireRate;
+
+        ammo--;
+    }
+
+    public void GiveAmmo(int amount, GameObject pickup)
+    {
+        if(ammo < maxAmmo)
+        {
+            ammo += amount;
+            Destroy(pickup);
+        }
+
+        if(ammo > maxAmmo)
+        {
+            ammo = maxAmmo;
+        }
     }
 }
