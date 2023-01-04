@@ -13,6 +13,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private float bigDamage;
     [SerializeField] private float smallDamage;
     [SerializeField] private LayerMask raycastLayerMask;
+    [SerializeField] private float gunShotRadius; //20f
+    [SerializeField] private LayerMask enemyLayerMask;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +57,17 @@ public class Gun : MonoBehaviour
 
     void Fire()
     {
+        Collider[] enemyColliders;
+        enemyColliders = Physics.OverlapSphere(transform.position, gunShotRadius, enemyLayerMask);
+
+        foreach (var enemyCollider in enemyColliders)
+        {
+            enemyCollider.GetComponent<EnemyAwareness>().isAggro = true;
+        }
+
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().Play();
+
         foreach (var enemy in enemyManager.enemiesInTrigger)
         {
             var dir = enemy.transform.position - transform.position;
