@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CanvasManager.Instance.ClearKey();
     }
 
     // Update is called once per frame

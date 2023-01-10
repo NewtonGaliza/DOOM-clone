@@ -26,6 +26,7 @@ public class Gun : MonoBehaviour
         gunTrigger.size = new Vector3(x: 1, y: verticalRange, z: range);
         gunTrigger.center = new Vector3(x: 0, y: 0, z: range * 0.5f);
 
+        CanvasManager.Instance.UpdateAmmo(ammo);
     }
 
     // Update is called once per frame
@@ -96,6 +97,8 @@ public class Gun : MonoBehaviour
         nextTimeToFire = Time.time * fireRate;
 
         ammo--;
+
+        CanvasManager.Instance.UpdateAmmo(ammo);
     }
 
     public void GiveAmmo(int amount, GameObject pickup)
@@ -110,5 +113,7 @@ public class Gun : MonoBehaviour
         {
             ammo = maxAmmo;
         }
+
+        CanvasManager.Instance.UpdateAmmo(ammo);
     }
 }

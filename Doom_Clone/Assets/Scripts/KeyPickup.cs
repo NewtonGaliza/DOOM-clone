@@ -13,16 +13,19 @@ public class KeyPickup : MonoBehaviour
             if(isRedKey)
             {
                 collider.GetComponent<PlayerInventory>().hasRed = true;
+                CanvasManager.Instance.UpdateKeys("red");
             }
 
             if(isBlueKey)
             {
                 collider.GetComponent<PlayerInventory>().hasBlue = true;
+                CanvasManager.Instance.UpdateKeys("blue");
             }
 
             if(isGreenKey)
             {
                 collider.GetComponent<PlayerInventory>().hasGreen = true;
+                CanvasManager.Instance.UpdateKeys("green");
             }
 
             Destroy(gameObject);

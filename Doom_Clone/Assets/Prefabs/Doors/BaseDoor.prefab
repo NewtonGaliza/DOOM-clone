@@ -163,6 +163,7 @@ MonoBehaviour:
   reqRed: 0
   reqBlue: 0
   reqGreen: 0
+  isSpawner: 0
 --- !u!1 &5348230469815457950
 GameObject:
   m_ObjectHideFlags: 0
