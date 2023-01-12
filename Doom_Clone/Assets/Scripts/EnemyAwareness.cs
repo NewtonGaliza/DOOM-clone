@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAwareness : MonoBehaviour
 {
-   [SerializeField] private Material aggroMaterial;
+   // [SerializeField] private Material aggroMaterial;
    public bool isAggro;
    private Transform playersTransform;
    [SerializeField] private float awarenessRadius;
@@ -26,7 +26,7 @@ public class EnemyAwareness : MonoBehaviour
 
         if(isAggro)
         {
-            GetComponent<MeshRenderer>().material = aggroMaterial;
+            // GetComponent<MeshRenderer>().material = aggroMaterial;
         }
    }
 }
